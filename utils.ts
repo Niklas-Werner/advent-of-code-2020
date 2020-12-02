@@ -9,3 +9,7 @@ export async function readNonEmptyLines(...pathSegments: string[]) {
     const lines = content.split(/\r?\n/g);
     return lines.filter(line => line !== '');
 }
+
+export function isNonNullable<T>(x: T): x is NonNullable<T> {
+    return x !== null && x !== undefined;
+}
