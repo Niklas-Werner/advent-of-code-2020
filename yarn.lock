@@ -7,6 +7,39 @@
   resolved "https://registry.yarnpkg.com/@nw55/build-tools/-/build-tools-0.2.4.tgz#688db1a4f9723b3e32d6bafc4b0d0b1b9422647f"
   integrity sha512-FunvR94FG85+ZorzTaa8t+ZLjkWUaxX87QvICKKlG76yZCjEiGjz7Vy6j7AlPoIG4a4Bv3XantVMYvky2MAbww==
 
+"@nw55/common@~0.2.0", "@nw55/common@~0.2.1":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@nw55/common/-/common-0.2.2.tgz#1fe8f78446dc7eb5bd6e3aa7c4984ecbfdd99fa7"
+  integrity sha512-owRXI9x1xD52aMK4GU4YIkSt8FMsxESxfwqHELQ6cuDa6EWMIcyrCWT7p9YsQywRiflmHT2GSS8bESw2h/+pQg==
+
+"@nw55/logging@~0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nw55/logging/-/logging-0.1.0.tgz#cae884665afaa046fc79fb367ac49daf5df3ab87"
+  integrity sha512-fIiyFgnNF0vFF9XjC8ZaVU9o8uJne/kix2pp6gFlPLm37qpBgvmrgcVi3O+DpAdISpK/0mvRNLnRIhgp3R4ZlQ==
+  dependencies:
+    "@nw55/common" "~0.2.1"
+
+"@nw55/node-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nw55/node-utils/-/node-utils-0.1.0.tgz#600aee18f7fc7a2ef6175f2cc5e27a12419197f4"
+  integrity sha512-y6RI6+9o5+oavGZWMhmi6AqEECtxj57DBujojxcK+oqi56NdUjswxXBalz510vR0hSYXlTEfro+sRC/GlUrksQ==
+  dependencies:
+    "@nw55/common" "~0.2.1"
+    "@nw55/logging" "~0.1.0"
+    "@nw55/type-checking" "~0.1.0"
+
+"@nw55/type-checking@~0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nw55/type-checking/-/type-checking-0.1.0.tgz#3e513c239336a66dfbf9af448d92207862679921"
+  integrity sha512-5wqwHT7MguVLC0K9bS5oD+VjECvyEzkIOJgoJ3uJCM+RmAsY1N7sROJxfWdgyUlYoqWo30MiE9mfj+kHQkcHhg==
+  dependencies:
+    "@nw55/common" "~0.2.0"
+
+"@types/node@^14.14.10":
+  version "14.14.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
+  integrity sha512-J32dgx2hw8vXrSbu4ZlVhn1Nm3GbeCFNw2FWL8S5QKucHGY0cyNwjdQdO+KMBZ4wpmC7KhLCiNsdk1RFRIYUQQ==
+
 arg@^4.1.0:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
