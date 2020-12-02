@@ -1,0 +1,14 @@
+{
+  "name": "advent-of-code-2020",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Niklas-Werner/advent-of-code-2020.git",
+  "author": "Niklas Werner <Niklas-Werner@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@nw55/build-tools": "^0.2.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  }
+}
