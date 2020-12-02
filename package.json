@@ -6,6 +6,9 @@
   "author": "Niklas Werner <Niklas-Werner@outlook.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "ts-node --transpile-only"
+  },
   "dependencies": {
     "@nw55/build-tools": "^0.2.4",
     "@nw55/node-utils": "^0.1.0",
