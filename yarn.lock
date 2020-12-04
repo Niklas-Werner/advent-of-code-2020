@@ -7,7 +7,7 @@
   resolved "https://registry.yarnpkg.com/@nw55/build-tools/-/build-tools-0.2.4.tgz#688db1a4f9723b3e32d6bafc4b0d0b1b9422647f"
   integrity sha512-FunvR94FG85+ZorzTaa8t+ZLjkWUaxX87QvICKKlG76yZCjEiGjz7Vy6j7AlPoIG4a4Bv3XantVMYvky2MAbww==
 
-"@nw55/common@~0.2.0", "@nw55/common@~0.2.1":
+"@nw55/common@^0.2.2", "@nw55/common@~0.2.0", "@nw55/common@~0.2.1":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@nw55/common/-/common-0.2.2.tgz#1fe8f78446dc7eb5bd6e3aa7c4984ecbfdd99fa7"
   integrity sha512-owRXI9x1xD52aMK4GU4YIkSt8FMsxESxfwqHELQ6cuDa6EWMIcyrCWT7p9YsQywRiflmHT2GSS8bESw2h/+pQg==
