@@ -16,17 +16,36 @@ export function isNonNullable<T>(x: T): x is NonNullable<T> {
 }
 
 export interface DayOptions {
-    readonly keepBlankLines?: boolean;
+    readonly blankLines?: false | 'keep' | 'group';
 }
 
-export function runDay(dir: string, options: DayOptions, fn: (input: string[]) => Awaitable<void>) {
+type InputType<Options extends DayOptions> = Options['blankLines'] extends 'group' ? string[][] : string[];
+
+export function runDay<O extends DayOptions>(dir: string, options: O, fn: (input: InputType<O>) => Awaitable<void>) {
     runMain(async ([param]) => {
         const file = resolve(dir, param === 'test' ? 'test-input' : 'input');
-        const content = await tryReadTextFile(file);
+        let content = await tryReadTextFile(file);
         if (content === null)
             throw new Error('file not found');
-        const lines = content.split(/\r?\n/g);
-        const input = options.keepBlankLines ? lines : lines.filter(line => line !== '');
-        await fn(input);
+        content = content.replace(/\r?\n$/, '');
+        switch (options.blankLines) {
+            case 'keep': {
+                const lines = content.split(/\r?\n/g);
+                await fn(lines as InputType<typeof options>);
+                break;
+            }
+            case 'group': {
+                const groups = content.split(/(?:\r?\n){2}/g);
+                const input = groups.map(group => group.split(/\r?\n/g));
+                await fn(input as InputType<typeof options>);
+                break;
+            }
+            default: {
+                const lines = content.split(/\r?\n/g);
+                const input = options.blankLines ? lines : lines.filter(line => line !== '');
+                await fn(input as InputType<typeof options>);
+                break;
+            }
+        }
     });
 }

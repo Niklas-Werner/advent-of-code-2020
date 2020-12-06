@@ -15,7 +15,7 @@ const validationRules = {
 };
 const requiredFields = Object.keys(validationRules);
 
-runDay(__dirname, { keepBlankLines: true }, async input => {
+runDay(__dirname, { blankLines: 'keep' }, async input => {
     if (input[input.length - 1] !== '')
         input.push('');
 
