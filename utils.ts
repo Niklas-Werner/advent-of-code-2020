@@ -23,7 +23,7 @@ type InputType<Options extends DayOptions> = Options['blankLines'] extends 'grou
 
 export function runDay<O extends DayOptions>(dir: string, options: O, fn: (input: InputType<O>) => Awaitable<void>) {
     runMain(async ([param]) => {
-        const file = resolve(dir, param === 'test' ? 'test-input' : 'input');
+        const file = resolve(dir, param === 'test' ? 'test-input' : param === 'test2' ? 'test-input2' : 'input');
         let content = await tryReadTextFile(file);
         if (content === null)
             throw new Error('file not found');
