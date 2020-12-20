@@ -37,7 +37,7 @@ export function runDay<O extends DayOptions>(dir: string, options: O, fn: (input
         let content = await tryReadTextFile(file);
         if (content === null)
             throw new Error('file not found');
-        content = content.replace(/\r?\n$/, '');
+        content = content.replace(/(?:\r?\n)+$/, '');
         switch (options.blankLines) {
             case 'keep': {
                 const lines = content.split(/\r?\n/g);
