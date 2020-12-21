@@ -1,4 +1,4 @@
-import { Awaitable } from '@nw55/common';
+import { Awaitable, TwoWayMap } from '@nw55/common';
 import { LogLevel } from '@nw55/logging';
 import { runMain, tryReadTextFile, useDefaultConsoleLogging } from '@nw55/node-utils';
 import { resolve } from 'path';
@@ -59,3 +59,39 @@ export function runDay<O extends DayOptions>(dir: string, options: O, fn: (input
         }
     });
 }
+
+function backtrackMatchHelper<K, V>(candidates: Iterable<readonly [K, Iterable<V>]>, target: number, matches: TwoWayMap<K, V>): boolean {
+    if (matches.size >= target)
+        return true;
+
+    const filteredMatchCandidates = [...candidates]
+        .filter(([key, values]) => !matches!.hasKey(key))
+        .map(([key, values]) => [key, [...values].filter(value => !matches!.hasValue(value))] as const)
+        .filter(([key, values]) => values.length > 0)
+        .sort((a, b) => a[1].length - b[1].length);
+
+    if (filteredMatchCandidates.length === 0)
+        return false;
+
+    const [allergen, currentIngredients] = filteredMatchCandidates[0];
+
+    for (const ingredient of currentIngredients) {
+        if (!matches.hasValue(ingredient)) {
+            matches.set(allergen, ingredient);
+            if (backtrackMatchHelper(candidates, target, matches))
+                return true;
+            matches.delete(allergen);
+        }
+    }
+
+    return false;
+}
+
+export function backtrackMatch<K, V>(candidates: Iterable<readonly [K, Iterable<V>]>) {
+    const matches = new TwoWayMap<K, V>();
+    const target = [...candidates].length;
+    const success = backtrackMatchHelper(candidates, target, matches);
+    return success ? matches : null;
+}
+
+export const compareStrings = (a: string, b: string) => a > b ? 1 : b > a ? -1 : 0;
